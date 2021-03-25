@@ -13,9 +13,8 @@ router.post('/', (req, res) => {
 
 router.get('/', (req, res) => {
     categoriesService.all()
-        .then(data => {
-            console.log(data);
-            res.status(200).json({ data })
+        .then(posts => {
+            res.status(200).json({ posts })
         })
         .catch(err => res.status(401).json({ err }))
 })
