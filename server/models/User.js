@@ -13,6 +13,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         minlength: [5, 'Password must be more than 5 characters long']
+    },
+    pictureUrl: {
+        type: String,
     }
 });
 

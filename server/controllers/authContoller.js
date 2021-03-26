@@ -2,9 +2,9 @@ const router = require('express').Router()
 const usersService = require('../services/usersService')
 
 router.post('/register', (req, res) => {
-    let { username, password } = req.body
-
-    usersService.register(username, password)
+    let { username, password, pictureUrl } = req.body
+    console.log(req.body);
+    usersService.register(username, password, pictureUrl)
         .then(user => {
             console.log(user)
             res.status(201).json({ _id: user._id })
