@@ -1,7 +1,7 @@
 const Category = require('../models/Category')
 
-const create = (name, pictureUrl) => {
-    let category = new Category({ name, pictureUrl })
+const create = (name, pictureUrl, creator) => {
+    let category = new Category({ name, pictureUrl, creator})
 
     return category.save()
 }
@@ -16,5 +16,6 @@ const byId = (id) => {
 
 module.exports = {
     create,
-    all
+    all,
+    byId
 }
