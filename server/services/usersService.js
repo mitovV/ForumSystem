@@ -1,11 +1,11 @@
 const User = require("../models/User");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { SECRET } = require('../config/config');
+const { SECRET, DEFAULT_USER_PICTURE } = require('../config/config');
 
 const register = (username, password, pictureUrl) => {
     if (!pictureUrl) {
-        pictureUrl = 'https://res.cloudinary.com/dgw65zfwf/image/upload/v1606221905/k9xzhcsejevdeohpq0y7.jpg'
+        pictureUrl = DEFAULT_USER_PICTURE
     }
 
     let user = new User({ username, password, pictureUrl });
