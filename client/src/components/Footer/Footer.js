@@ -1,8 +1,10 @@
+import './Footer.css'
+
 const Footer = () => {
     return(
         <footer className="center bg-primary text-white">
-        <div>
-             Forum System 2021 &copy;
+               <div class="container">
+            &copy; 2021 - Forum System
         </div>
     </footer>
     )

@@ -1,21 +1,36 @@
+import { Link } from 'react-router-dom'
+
 const Login = () => {
     return (
-        <form>
-            <div className="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-                <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+        <>
+            <h1>Log in</h1>
+            <div className="row justify-content-center">
+                <div className="col-md-4">
+                    <section>
+                        <form id="account">
+                            <h4>Use a local account to log in.</h4>
+                            <hr />
+                            <div className="form-group">
+                                <label htmlFor="username">Username</label>
+                                <input className="form-control" id="username" name="username" />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="password">Password</label>
+                                <input className="form-control" id="password" name="password" />
+                            </div>
+                            <div className="form-group">
+                                <button type="button" className="btn btn-primary">Log in</button>
+                            </div>
+                            <div className="form-group">
+                                <p>
+                                    <Link to="/users/register">Register as a new user</Link>
+                                </p>
+                            </div>
+                        </form>
+                    </section>
+                </div>
             </div>
-            <div className="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
-            </div>
-            <div className="form-group form-check">
-                <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                <label className="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
-        </form>
+        </>
     )
 }
 
