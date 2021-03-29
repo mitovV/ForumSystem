@@ -7,11 +7,11 @@ const create = (name, pictureUrl, creator) => {
 }
 
 const all = () => {
-    return Category.find().lean();
+    return Category.find();
 }
 
 const byId = (id) => {
-    return Category.findById(id).lean();
+    return Category.findById(id).populate('posts');
 }
 
 module.exports = {
