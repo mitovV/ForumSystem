@@ -4,7 +4,7 @@ const Register = () => {
             <h1>Register</h1>
             <div className="row justify-content-center">
                 <div className="col-md-4">
-                    <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                    <form>
                         <h4>Create a new account.</h4>
                         <hr />
                         <div className="form-group">
