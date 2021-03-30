@@ -20,7 +20,6 @@ const postSchema = new mongoose.Schema({
     },
     createdOn: {
         type: Date,
-        required: true
     },
     comments: [{
         type: mongoose.Types.ObjectId,
@@ -30,7 +29,7 @@ const postSchema = new mongoose.Schema({
 
 postSchema.pre('save', function (next) {
 
-    this.createdOn = new Date.now
+    this.createdOn = Date.now()
     next()
 })
 

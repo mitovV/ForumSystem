@@ -5,27 +5,35 @@ import * as categoriesService from '../../services/categoriesService'
 class Home extends Component {
     constructor(props) {
         super(props)
-        
+
         this.state = {
             categories: []
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         categoriesService
-        .getAll()
-        .then(categories => {
-            this.setState({categories})
-    })
+            .getAll()
+            .then(categories => {
+                this.setState({ categories })
+            })
     }
 
-    render(){
-        return(
+    componentDidUpdate() {
+        categoriesService
+            .getAll()
+            .then(categories => {
+                this.setState({ categories })
+            })
+    }
+
+    render() {
+        return (
             <>
-            <h1>Categories</h1>
-            <div className="row">
-                {this.state.categories.map(x => <Category key={x._id} {...x} />)}
-            </div>
+                <h1 className="text-primary mb-3">Categories</h1>
+                <div className="row">
+                    {this.state.categories.map(x => <Category key={x._id} {...x} />)}
+                </div>
             </>
         )
     }

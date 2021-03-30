@@ -23,7 +23,6 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     categoriesService.byId(req.params.id)
         .then( category  => {
-            console.log('test');
             res.status(200).json(category)
         })
         .catch(err => res.status(400).json({ err }))

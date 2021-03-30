@@ -1,11 +1,11 @@
 const Register = () => {
     return (
         <>
-            <h1>Register</h1>
+            <h1 className="text-primary">Register</h1>
             <div className="row justify-content-center">
                 <div className="col-md-4">
                     <form>
-                        <h4>Create a new account.</h4>
+                        <h4 className="text-primary">Create a new account.</h4>
                         <hr />
                         <div className="form-group">
                             <label htmlFor="username">Username</label>

@@ -26,7 +26,7 @@ const commentSchema = new mongoose.Schema({
 
 commentSchema.pre('save', function (next) {
 
-    this.createdOn = new Date.now
+    this.createdOn = Date.now()
     next()
 })
 

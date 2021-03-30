@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom'
 const Login = () => {
     return (
         <>
-            <h1>Log in</h1>
+            <h1 className="text-primary">Log in</h1>
             <div className="row justify-content-center">
                 <div className="col-md-4">
                     <section>
                         <form id="account">
-                            <h4>Use a local account to log in.</h4>
+                            <h4 className="text-primary">Use a local account to log in.</h4>
                             <hr />
                             <div className="form-group">
                                 <label htmlFor="username">Username</label>

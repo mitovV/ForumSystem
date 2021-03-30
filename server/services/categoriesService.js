@@ -1,7 +1,7 @@
 const Category = require('../models/Category')
 
 const create = (name, pictureUrl, creator) => {
-    let category = new Category({ name, pictureUrl, creator})
+    let category = new Category({ name, pictureUrl, creator })
 
     return category.save()
 }
@@ -11,7 +11,13 @@ const all = () => {
 }
 
 const byId = (id) => {
-    return Category.findById(id).populate('posts');
+    return Category.findById(id).populate({
+        path: 'posts',
+        populate: {
+            path: 'creator',
+        }
+
+    });
 }
 
 module.exports = {
