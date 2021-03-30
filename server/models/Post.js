@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 const postSchema = new mongoose.Schema({
     title: {
@@ -27,5 +27,11 @@ const postSchema = new mongoose.Schema({
         ref: 'Comment',
     }]
 });
+
+postSchema.pre('save', function (next) {
+
+    this.createdOn = new Date.now
+    next()
+})
 
 module.exports = mongoose.model('Post', postSchema);

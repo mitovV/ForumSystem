@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
-const { SALT_ROUNDS } = require('../config/config');
+const mongoose = require('mongoose')
+const bcrypt = require('bcrypt')
+const { SALT_ROUNDS } = require('../config/config')
 
 
 const userSchema = new mongoose.Schema({
@@ -23,9 +23,9 @@ userSchema.pre('save', function(next) {
     bcrypt.genSalt(SALT_ROUNDS)
         .then(salt => bcrypt.hash(this.password, salt))
         .then(hash => {
-            this.password = hash;
-            next();
+            this.password = hash
+            next()
         })
-});
+})
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', userSchema)
