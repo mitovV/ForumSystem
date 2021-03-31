@@ -6,8 +6,9 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Login from './components/Login'
 import Register from './components/Register'
-import Home from './components/Home';
-import Posts from './components/Posts';
+import Home from './components/Home'
+import Posts from './components/Posts'
+import Post from './components/Post'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/users/login" component={Login}/>
         <Route path="/users/register" component={Register}/>
         <Route path="/categories/:id" component={Posts}/>
+        <Route path="/posts/:id" component={Post}/>
         <Route path="/" exact component={Home}/>
       </Switch>
       <Footer/>

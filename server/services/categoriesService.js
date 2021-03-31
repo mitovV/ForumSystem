@@ -16,8 +16,7 @@ const byId = (id) => {
         populate: {
             path: 'creator',
         }
-
-    });
+    })
 }
 
 module.exports = {

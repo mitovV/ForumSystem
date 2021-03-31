@@ -19,14 +19,6 @@ class Home extends Component {
             })
     }
 
-    componentDidUpdate() {
-        categoriesService
-            .getAll()
-            .then(categories => {
-                this.setState({ categories })
-            })
-    }
-
     render() {
         return (
             <>

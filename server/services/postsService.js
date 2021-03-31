@@ -15,7 +15,13 @@ const allByCategory = (id) => {
 }
 
 const byId = (id) => {
-    return Post.findById(id);
+    return Post.findById(id).populate(
+        {
+            path: 'creator',
+            populate: {
+                path: 'comments',
+            }
+        })
 }
 
 module.exports = {
