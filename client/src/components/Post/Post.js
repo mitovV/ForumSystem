@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 
 import * as postService from '../../services/postsService'
-import Card from '../Card';
+import PostDetails from '../PostDetails';
 import CommentForm from '../CommentForm'
 
 const Post = ({
@@ -30,7 +30,7 @@ const Post = ({
     return (
         <>
             <h3>{post.title}</h3>
-            <Card post={post} showAddCommentForm={showAddCommentForm} />
+            <PostDetails post={post} showAddCommentForm={showAddCommentForm} />
             <CommentForm available={available} id={post._id} />
         </>
     )
