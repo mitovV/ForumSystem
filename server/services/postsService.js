@@ -15,11 +15,11 @@ const allByCategory = (id) => {
 }
 
 const byId = (id) => {
-    return Post.findById(id).populate(
+    return Post.findById(id).populate('creator').populate(
         {
-            path: 'creator',
+            path: 'comments',
             populate: {
-                path: 'comments',
+                path: 'creator',
             }
         })
 }

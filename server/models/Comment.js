@@ -16,7 +16,6 @@ const commentSchema = new mongoose.Schema({
     },
     createdOn: {
         type: Date,
-        required: true
     },
     creator: {
         type: mongoose.Types.ObjectId,
