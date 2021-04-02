@@ -5,7 +5,6 @@ const usersService = require('../services/usersService')
 router.post('/register', (req, res) => {
     let { username, password, pictureUrl } = req.body
 
-    console.log(req.body);
     usersService.register(username, password, pictureUrl)
         .then(user => {
             res.status(201).json({ _id: user._id })
