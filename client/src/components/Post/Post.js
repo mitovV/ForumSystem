@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 
-
 import * as postService from '../../services/postsService'
 import PostDetails from '../PostDetails';
 import CommentForm from '../CommentForm'

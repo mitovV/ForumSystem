@@ -20,7 +20,11 @@ const commentSchema = new mongoose.Schema({
     creator: {
         type: mongoose.Types.ObjectId,
         ref: 'User'
-    }
+    },
+    comments: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'Comment',
+    }]
 })
 
 commentSchema.pre('save', function (next) {

@@ -3,6 +3,11 @@ const Post = require('../models/Post')
 
 const create = async (postId, parentId, content, creator) => {
     let comment = new Comment({ post: postId, parent: parentId, content, creator })
+
+    let parent = await Comment.findById(parentId)
+    parent.comments.push(comment)
+    await parent.save()
+    
     let post = await Post.findById(postId)
     post.comments.push(comment)
     await post.save()
