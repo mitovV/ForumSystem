@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import * as postService from '../../services/postsService'
-import PostDetails from '../PostDetails';
+import Card from '../Card';
 import CommentForm from '../CommentForm'
 
 const Post = ({
@@ -25,11 +25,11 @@ const Post = ({
     const showAddCommentForm = () => {
         setAvailable(!available)
     }
-
+    
     return (
         <>
             <h3>{post.title}</h3>
-            <PostDetails post={post} showAddCommentForm={showAddCommentForm} />
+            <Card post={post} showAddCommentForm={showAddCommentForm} />
             <CommentForm available={available} id={post._id} />
         </>
     )

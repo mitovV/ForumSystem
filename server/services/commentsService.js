@@ -4,24 +4,16 @@ const Post = require('../models/Post')
 const create = async (postId, parentId, content, creator) => {
     let comment = new Comment({ post: postId, parent: parentId, content, creator })
 
-    let parent = await Comment.findById(parentId)
-    parent.comments.push(comment)
-    await parent.save()
-    
-    let post = await Post.findById(postId)
-    post.comments.push(comment)
-    await post.save()
-
     return comment.save()
 }
 
-const getCommentsByParentId = (id) => {
-    let comments = Comment.find({parent: id}).populate('creator')
+const getCommentsByParentAndPostId = (postId, parentId) => { 
+  let  comments = Comment.find({post: postId, parent: parentId}).populate('creator')
 
     return comments
 }
 
 module.exports = {
     create,
-    getCommentsByParentId
+    getCommentsByParentAndPostId
 }

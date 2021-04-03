@@ -12,8 +12,11 @@ router.post('/', (req, res) => {
         .catch(err => res.status(400).json({ err }))
 })
 
-router.get('/:id', (req, res) => {
-    commentsService.getCommentsByParentId(req.params.id)
+router.get('/:postId/:parentId?', (req, res) => {
+    let postId = req.params.postId
+    let parentId = req.params.parentId || null
+    
+    commentsService.getCommentsByParentAndPostId(postId, parentId)
     .then( comments  => {
         res.status(200).json(comments)
     })

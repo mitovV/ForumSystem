@@ -1,10 +1,10 @@
 import Card from "../Card"
 
-const PostDetails = ({ post, showAddCommentForm }) => {
+const PostDetails = ({ comments, showAddCommentForm }) => {
     return (
-        <>
-        {post.comments.map(x => <Card post={x} showAddCommentForm={showAddCommentForm} />)}
-        </>
+        <div className="row">
+        {comments.sort((a, b) => new Date(b.createdOn) - new Date(a.createdOn)).map(x => <Card key={x._id} post={x} showAddCommentForm={showAddCommentForm} />)}
+        </div>
     )
 }
 
