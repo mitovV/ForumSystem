@@ -14,6 +14,7 @@ const Post = ({
     })
 
     const [available, setAvailable] = useState(false)
+    const [parentId, setParentId] = useState('')
 
     useEffect(() =>
         postService.getById(match.params.id)
@@ -22,15 +23,16 @@ const Post = ({
             })
         , [match.params.id])
 
-    const showAddCommentForm = () => {
+    const showAddCommentForm = (parentId) => {
         setAvailable(!available)
+        setParentId(parentId)
     }
-
+    
     return (
         <>
             <h3>{post.title}</h3>
             <Card post={post} showAddCommentForm={showAddCommentForm} />
-            <CommentForm available={available} postId={post._id} />
+            <CommentForm available={available} postId={post._id} parentId={parentId} />
         </>
     )
 }

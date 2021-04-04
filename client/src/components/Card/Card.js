@@ -42,7 +42,7 @@ const Card = ({ post, showAddCommentForm }) => {
                             <div className="text-muted small ml-3">
                                  {/* @if (this.User.Identity.IsAuthenticated) 
                                  {  */}
-                                    <div className="px-4 pt-3"> <button type="button" className="btn btn-primary float-right" onClick={showAddCommentForm}>Answer</button> </div>
+                                    <div className="px-4 pt-3"> <button type="button" className="btn btn-primary float-right" onClick={ () => showAddCommentForm(post._id)}>Answer</button> </div>
                                 {/* } */}
                             </div>
                         </div>
