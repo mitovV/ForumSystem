@@ -1,26 +1,34 @@
 import { useRef, useEffect } from 'react'
+import { Editor } from '@tinymce/tinymce-react'
 
-const CommentForm = ({ available}) => {
+const CommentForm = ({ available, postId, parentId}) => {
     const ref = useRef(null)
 
     useEffect(() => {
         if (available) {
-            ref.current.scrollIntoView()
-            return ref.current.focus()
+         return    ref.current.scrollIntoView()
         }
 
     }, [available])
 
     if (!available) return null;
     
+    const onAddCommentHandler = (e) => {
+        e.preventDefault()
+
+        console.log(e.target.content.value);
+        console.log(postId);
+        console.log(parentId);
+    }
+
     return (
-        <form>
+        <form onSubmit={onAddCommentHandler}>
             <div>
-                <label htmlFor="Content" className="text-primary">Write comment</label>
-                <textarea ref={ref} name="Content" id="Content" className="form-control"></textarea>
+                <label htmlFor="content" className="text-primary">Write comment</label>
+                <Editor id="content" name="content"  className="form-control"></Editor>
             </div>
             <div>
-                <input type="button" className="btn btn-primary mt-2" value="Add comment" />
+                <input ref={ref} type="submit" className="btn btn-primary mt-2" value="Add comment" />
             </div>
         </form>
     )

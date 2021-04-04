@@ -32,7 +32,7 @@ const Card = ({ post, showAddCommentForm }) => {
                 <div className="card mb-4 mt-2">
                     <div className="card-header">
                         <div className="media flex-wrap w-100 align-items-center">
-                            <img src={post.creator.pictureUrl} width="50" className="d-block ui-w-40 rounded-circle" alt="user"/>
+                            <img src={post.creator.pictureUrl} width="40" className="d-block ui-w-40 rounded-circle" alt="user"/>
                             <div className="media-body ml-3">
                                    {post.creator.username}
                                 <div className="text-muted small">
@@ -48,8 +48,9 @@ const Card = ({ post, showAddCommentForm }) => {
                         </div>
                     </div>
                     <div className="card-body">
-                        <article>
-                             {post.content}
+                        <article  dangerouslySetInnerHTML={{
+                         __html: post.content
+                              }}>
                         </article>
                          {<PostDetails comments={comments} showAddCommentForm={showAddCommentForm}/>}
                     </div>

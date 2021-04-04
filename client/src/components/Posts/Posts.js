@@ -7,7 +7,7 @@ import { FaUserCircle, } from 'react-icons/fa'
 import { FcComments, FcCalendar } from "react-icons/fc"
 import Moment from 'react-moment'
 
-const Post = ({
+const Posts = ({
     match
 }) => {
     const [category, setCategory] = useState({ posts: [] })
@@ -41,4 +41,4 @@ const Post = ({
     )
 }
 
-export default Post
+export default Posts
