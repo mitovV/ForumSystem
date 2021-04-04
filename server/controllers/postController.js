@@ -29,5 +29,13 @@ router.get('/:id', (req, res) => {
         .catch(err => res.status(400).json({ err }))
 })
 
+router.get('/:id/comments', (req, res) => {
+    postsService.getCommentsCount(req.params.id)
+        .then(count => {
+            res.status(200).json(count)
+        })
+        .catch(err => res.status(400).json({ err }))
+})
+
 
 module.exports = router

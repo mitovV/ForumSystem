@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom'
 import * as categoriesService from '../../services/categoriesService'
 
 import { FaUserCircle, } from 'react-icons/fa'
-import { FcComments, FcCalendar } from "react-icons/fc"
+import { FcCalendar } from 'react-icons/fc'
 import Moment from 'react-moment'
+
+import Comments from './Comments'
 
 const Posts = ({
     match
@@ -31,9 +33,8 @@ const Posts = ({
                         <li className="list-inline-item">
                             <FcCalendar/><Moment local format="YYYY/MM/DD H:MM">{x.createdOn}</Moment>
             </li>
-                        <li className="list-inline-item">
-                            <FcComments /> {x.comments.length} comments
-            </li>
+            < Comments  postId={x._id}/>
+        
                     </ul>
                 </div>
             )}

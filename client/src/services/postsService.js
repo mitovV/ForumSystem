@@ -5,3 +5,9 @@ export const getById = (id) => {
         .then(res => res.json())
         .catch(err => console.log(err))
 }
+
+export const getCommentsCount = (id) => {
+    return fetch(url + `/${id}/comments`)
+        .then(res => res.json())
+        .catch(err => console.log(err))
+}
