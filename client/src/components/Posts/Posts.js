@@ -6,12 +6,16 @@ import * as categoriesService from '../../services/categoriesService'
 import { FaUserCircle, } from 'react-icons/fa'
 import { FcCalendar } from 'react-icons/fc'
 import Moment from 'react-moment'
+import sanitizedHTML from 'sanitize-html'
+
 
 import Comments from './Comments'
 
 const Posts = ({
     match
 }) => {
+    const regex = new RegExp('<[^>]+>','gm')
+    
     const [category, setCategory] = useState({ posts: [] })
 
     useEffect(() =>
@@ -25,16 +29,17 @@ const Posts = ({
             {category.posts.length === 0 ? <h2 className="text-info"> Тhere are no posts yet!</h2> : category.posts.map(x =>
                 <div key={x._id} className="media-body mr-2 bg-light">
                     <h4 className="media-heading"><Link to={`/posts/${x._id}`} className="text-dark">{x.title}</Link></h4>
-                    <p>{`${x.content.slice(0 ,100)}...` }</p>
+                    <p dangerouslySetInnerHTML={{
+                        __html: `${sanitizedHTML(x.content).replace(regex, '').slice(0, 100)}...`
+                    }}></p>
                     <ul className="list-inline list-unstyled text-right">
                         <li className="list-inline-item">
-                        <FaUserCircle className="mr-1"/>{x.creator.username}
-            </li>
+                            <FaUserCircle className="mr-1" />{x.creator.username}
+                        </li>
                         <li className="list-inline-item">
-                            <FcCalendar/><Moment local format="YYYY/MM/DD H:MM">{x.createdOn}</Moment>
-            </li>
-            < Comments  postId={x._id}/>
-        
+                            <FcCalendar /><Moment local format="YYYY/MM/DD H:MM">{x.createdOn}</Moment>
+                        </li>
+                        < Comments postId={x._id} />
                     </ul>
                 </div>
             )}
