@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 
 import Moment from 'react-moment'
-import { FcCalendar } from "react-icons/fc"
+import { FcCalendar } from 'react-icons/fc'
+import sanitizedHTML  from 'sanitize-html'
 
 import * as commentsService from '../../services/commentsService'
 import PostDetails from '../PostDetails'
@@ -40,16 +41,13 @@ const Card = ({ post, showAddCommentForm }) => {
                                 </div>
                             </div>
                             <div className="text-muted small ml-3">
-                                 {/* @if (this.User.Identity.IsAuthenticated) 
-                                 {  */}
                                     <div className="px-4 pt-3"> <button type="button" className="btn btn-primary float-right" onClick={ () => showAddCommentForm(post._id)}>Answer</button> </div>
-                                {/* } */}
                             </div>
                         </div>
                     </div>
                     <div className="card-body">
-                        <article  dangerouslySetInnerHTML={{
-                         __html: post.content
+                        <article dangerouslySetInnerHTML={{
+                         __html: sanitizedHTML(post.content)
                               }}>
                         </article>
                          {<PostDetails comments={comments} showAddCommentForm={showAddCommentForm}/>}
