@@ -12,7 +12,7 @@ const Register = () => {
                             <input id="username" name="username" className="form-control" />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="pictureUrl">Picrure URL</label>
+                            <label htmlFor="pictureUrl">Image URL</label>
                             <input id="pictureUrl" name="pictureUrl" className="form-control" />
                         </div>
                         <div className="form-group">

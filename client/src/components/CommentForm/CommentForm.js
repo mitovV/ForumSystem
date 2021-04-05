@@ -17,6 +17,8 @@ const CommentForm = ({ available, postId, parentId}) => {
         e.preventDefault()
 
         // TODO: Check for same ids
+
+        
         console.log(e.target.content.value);
         console.log(postId);
         console.log(parentId);
