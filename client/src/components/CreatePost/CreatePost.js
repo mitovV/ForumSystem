@@ -4,7 +4,7 @@ import { Editor } from '@tinymce/tinymce-react'
 import InputError from '../Shared/InputError'
 
 const CreatePost = () => {
-    const titleMessage = 'Title must be more than 4 characters.'
+    const titleMessage = 'Title must contain at least 4 characters.'
     const [titleErrorMessage, setTitleErrorMessage] = useState('')
     const [contentErrorMessage, setConstentErrorMessage] = useState('')
 
@@ -19,7 +19,7 @@ const CreatePost = () => {
         }
 
         if (e.target.content.value.length < 10) {
-            setConstentErrorMessage('Content must be more than 10 characters.')
+            setConstentErrorMessage('Content must contain at least 10 characters.')
         }
         else{
             setConstentErrorMessage('')
