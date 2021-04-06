@@ -11,7 +11,7 @@ const register = (username, password, pictureUrl) => {
     return user.save()
 }
 
-const login = async(username, password) => {
+const login = async (username, password) => {
     let user = await User.findOne({ username })
     const errorObj = { message: 'Invalid username or password' }
 
@@ -26,11 +26,16 @@ const login = async(username, password) => {
     }
 
     let token = jwt.sign({ _id: user._id, username: user.username }, SECRET, { expiresIn: '1h' })
-    return token
+
+    return {
+        _id: user._id,
+        username: user.username,
+        token
+    }
 }
 
 const getUsername = (username) => {
-    return User.find({username})
+    return User.find({ username })
         .select('username')
 }
 

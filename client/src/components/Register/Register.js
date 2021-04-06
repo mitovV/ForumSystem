@@ -14,9 +14,7 @@ const Register = ({
     const onUsernameBlurHandler = (e) => {
         let username = e.target.value
 
-        usersService.getByUsername(username).then(res => {
-            console.log(res)
-            
+        usersService.getByUsername(username).then(res => {            
             if (username.length < 2) {
                 setUsernameMessage('Username must contain at least 2 characters.')
             }
@@ -52,9 +50,7 @@ const Register = ({
 
         let username = e.target.username.value
 
-        usersService.getByUsername(username).then(res => {
-            console.log(res)
-            
+        usersService.getByUsername(username).then(res => {            
             let imageUrl = e.target.imageUrl.value
             let password = e.target.password.value
             let confirmPassword = e.target.confirmPassword.value
@@ -87,7 +83,7 @@ const Register = ({
             if (!usernameMessage && !passwordMessage && !confirmPasswordMessage) {
                 authService.register(username, password, imageUrl)
                     .then(res => 
-                        
+
                         history.push('/users/login')
                         )
                     .catch(res => console.log(res.json()))

@@ -17,5 +17,18 @@ export const register = (username, password, pictureUrl) => {
 }
 
 export const login = (username, password) => {
-    
+    let user = {
+        username,
+        password,
+    }
+
+    return fetch(url + '/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    })
+        .then(res => res.json())
+        .catch(console.error)
 }

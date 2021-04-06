@@ -1,34 +1,39 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useContext } from 'react'
 import { Editor } from '@tinymce/tinymce-react'
 
-const CommentForm = ({ available, postId, parentId}) => {
+import userContext from '../../contexts/userContext'
+
+import * as commentsService from '../../services/commentsService'
+
+const CommentForm = ({ available, postId, parentId }, history) => {
     const ref = useRef(null)
+    const [user] = useContext(userContext)
 
     useEffect(() => {
         if (available) {
-         return    ref.current.scrollIntoView()
+            return ref.current.scrollIntoView()
         }
 
     }, [available])
 
     if (!available) return null;
-    
+
     const onAddCommentHandler = (e) => {
         e.preventDefault()
 
-        // TODO: Check for same ids
+        let content = e.target.content.value
+        parentId = parentId === postId ? null : parentId
 
-        
-        console.log(e.target.content.value);
-        console.log(postId);
-        console.log(parentId);
+        commentsService.crate(postId, parentId, content, user.token)
+        .then(history.push(`/posts/${postId}`))
+        .catch(console.log)
     }
 
     return (
         <form onSubmit={onAddCommentHandler}>
             <div>
                 <label htmlFor="content" className="text-primary">Write comment</label>
-                <Editor id="content" name="content"  className="form-control"></Editor>
+                <Editor id="content" name="content" className="form-control"></Editor>
             </div>
             <div>
                 <input ref={ref} type="submit" className="btn btn-primary mt-2" value="Add comment" />

@@ -12,14 +12,14 @@ router.post('/register', (req, res) => {
         .catch(err => res.status(400).json({ err }))
 })
 
-router.post('/login', isGuest,(req, res) => {
+router.post('/login', isGuest, (req, res) => {
     let { username, password } = req.body
 
     usersService.login(username, password)
-        .then(token => {
-            res.status(200).json({ token })
+        .then(user => {
+            res.status(200).json(user)
         })
-        .catch(err => res.status(400).json({ err }))
+        .catch(err => res.status(500).json(err))
 })
 
 module.exports = router
