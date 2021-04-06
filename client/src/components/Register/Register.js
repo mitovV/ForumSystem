@@ -2,6 +2,7 @@ import { useState } from 'react'
 import InputError from '../Shared/InputError'
 
 import * as authService from '../../services/authService'
+import * as usersService from '../../services/usersService'
 
 const Register = ({
     history
@@ -11,12 +12,21 @@ const Register = ({
     const [confirmPasswordMessage, setConfirmPasswordMessage] = useState('')
 
     const onUsernameBlurHandler = (e) => {
-        if (e.target.value.length < 2) {
-            setUsernameMessage('Username must contain at least 2 characters.')
-        }
-        else {
-            setUsernameMessage('')
-        }
+        let username = e.target.value
+
+        usersService.getByUsername(username).then(res => {
+            console.log(res)
+            
+            if (username.length < 2) {
+                setUsernameMessage('Username must contain at least 2 characters.')
+            }
+            else if (res.length > 0){
+                setUsernameMessage('Username already exists.')
+            }
+            else {
+                setUsernameMessage('')
+            }
+        })
     }
 
     const onPasswordBlurHandler = (e) => {
@@ -41,37 +51,48 @@ const Register = ({
         e.preventDefault()
 
         let username = e.target.username.value
-        let imageUrl = e.target.imageUrl.value
-        let password = e.target.password.value
-        let confirmPassword = e.target.confirmPassword.value
 
-        if (username.length < 2) {
-            setUsernameMessage('Username must contain at least 2 characters.')
-        }
-        else {
-            setUsernameMessage('')
-        }
-
-        if (password.length < 5) {
-            setPasswordMessage('Password must contain at least 5 characters.')
-        }
-
-        else {
-            setPasswordMessage('')
-        }
-
-        if (confirmPassword !== password || confirmPassword.length === 0) {
-           return setConfirmPasswordMessage('Passwords mismatch')
-        }
-        else {
-            setConfirmPasswordMessage('')
-        }
-
-        if (!usernameMessage && !passwordMessage && !confirmPasswordMessage) {
-            authService.register(username, password, imageUrl)
-                .then(console.log)
-                .catch(res => console.log(res.json()))
-        }
+        usersService.getByUsername(username).then(res => {
+            console.log(res)
+            
+            let imageUrl = e.target.imageUrl.value
+            let password = e.target.password.value
+            let confirmPassword = e.target.confirmPassword.value
+    
+            if (username.length < 2) {
+                setUsernameMessage('Username must contain at least 2 characters.')
+            }
+            else if (res.length > 0){
+                setUsernameMessage('Username already exists.')
+            }
+            else {
+                setUsernameMessage('')
+            }
+    
+            if (password.length < 5) {
+                setPasswordMessage('Password must contain at least 5 characters.')
+            }
+    
+            else {
+                setPasswordMessage('')
+            }
+    
+            if (confirmPassword !== password || confirmPassword.length === 0) {
+               return setConfirmPasswordMessage('Passwords mismatch')
+            }
+            else {
+                setConfirmPasswordMessage('')
+            }
+    
+            if (!usernameMessage && !passwordMessage && !confirmPasswordMessage) {
+                authService.register(username, password, imageUrl)
+                    .then(res => 
+                        
+                        history.push('/users/login')
+                        )
+                    .catch(res => console.log(res.json()))
+            }
+        })
     }
 
     return (

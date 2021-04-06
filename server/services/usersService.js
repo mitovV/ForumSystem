@@ -29,7 +29,13 @@ const login = async(username, password) => {
     return token
 }
 
+const getUsername = (username) => {
+    return User.find({username})
+        .select('username')
+}
+
 module.exports = {
     register,
     login,
+    getUsername
 }
