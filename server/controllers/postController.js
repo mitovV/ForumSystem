@@ -31,10 +31,16 @@ router.get('/:id', (req, res) => {
 
 router.get('/:id/comments', (req, res) => {
     postsService.getCommentsCount(req.params.id)
-        .then(count => {
-            res.status(200).json(count)
-        })
+        .then(count => res.status(200).json(count))
         .catch(err => res.status(400).json({ err }))
+})
+
+router.put('/:id', (req, res) => {
+    let {title, content, category} = req.body
+    
+    postsService.update(req.params.id, title, content, category)
+    .then(response => res.status(200).json(response))
+    .catch(console.log)
 })
 
 

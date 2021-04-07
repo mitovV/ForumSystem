@@ -50,10 +50,10 @@ const Card = ({ post, showAddCommentForm }) => {
                                         ?
                                         <div className="text-muted small ml-3">
                                             <div className="px-4 pt-3">
-                                                <Link type="button" className="btn btn-danger float-right ml-1">
+                                                <Link to={`/posts/${post._id}/delete`} type="button" className="btn btn-danger float-right ml-1">
                                                     Delete
                                                 </Link>
-                                                <Link type="button" className="btn btn-warning float-right">
+                                                <Link to={`/posts/${post._id}/edit`} type="button" className="btn btn-warning float-right">
                                                     Edit
                                                 </Link>
                                             </div>

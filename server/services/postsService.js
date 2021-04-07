@@ -20,12 +20,17 @@ const byId = (id) => {
 }
 
 const getCommentsCount = (id) => {
-    return Comment.find({ post: id }).count()
+    return Comment.find({ post: id }).countDocuments()
+}
+
+const update = (_id, title, content, category) => {
+  return  Post.findOneAndUpdate({_id}, {title, content, category})
 }
 
 module.exports = {
     create,
     allByCategory,
     byId,
-    getCommentsCount
+    getCommentsCount,
+    update
 }

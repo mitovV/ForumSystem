@@ -1,12 +1,18 @@
-import { useState } from 'react'
-import { Editor } from '@tinymce/tinymce-react'
+import { useState, useContext } from 'react'
 
-import InputError from '../Shared/InputError'
+import userContext from '../../contexts/userContext'
+import PostForm from '../PostForm'
 
-const CreatePost = () => {
+import * as postsService from '../../services/postsService'
+
+const CreatePost = ({
+    history
+}) => {
     const titleMessage = 'Title must contain at least 4 characters.'
     const [titleErrorMessage, setTitleErrorMessage] = useState('')
     const [contentErrorMessage, setConstentErrorMessage] = useState('')
+
+    const [user] = useContext(userContext)
 
     const createPostFormSubmitHandler = (e) => {
         e.preventDefault()
@@ -14,23 +20,32 @@ const CreatePost = () => {
         if (e.target.title.value.length < 4) {
             setTitleErrorMessage(titleMessage)
         }
-        else{
+        else {
             setTitleErrorMessage('')
         }
 
         if (e.target.content.value.length < 10) {
-            setConstentErrorMessage('Content must contain at least 10 characters.')
+           return setConstentErrorMessage('Content must contain at least 10 characters.')
         }
-        else{
+        else {
             setConstentErrorMessage('')
         }
+
+            let title = e.target.title.value
+            let content = e.target.content.value
+            let category = e.target.category.value
+    
+            postsService
+                .create(title, content, category, user.token)
+                .then(res => history.push(`/posts/${res._id}`))
+                .catch(console.log)
     }
 
     const onTitleBlurHandler = (e) => {
         if (e.target.value.length < 4 || !e.target.value) {
             setTitleErrorMessage(titleMessage)
         }
-        else{
+        else {
             setTitleErrorMessage('')
         }
     }
@@ -40,30 +55,12 @@ const CreatePost = () => {
             <h1 className="text-primary">Crate post</h1>
             <div className="row justify-content-center">
                 <div className="col-md-6">
-                    <form onSubmit={createPostFormSubmitHandler}>
-                        <div>
-                            <label htmlFor="title">Title</label>
-                            <input id="title" name="title" className="form-control"  onBlur={onTitleBlurHandler}/>
-                            <InputError>{titleErrorMessage}</InputError>
-                        </div>
-
-                        <div>
-                            <label htmlFor="content">Content</label>
-                            <Editor id="content" name="content" className="form-control"/>
-                            <InputError>{contentErrorMessage}</InputError>
-                        </div>
-
-                        <div>
-                            <label htmlFor="categoryId">Category</label>
-                            <select name="categoryId" className="form-control">
-                                <option value="volvo">Volvo</option>
-                                <option value="saab">Saab</option>
-                                <option value="opel">Opel</option>
-                                <option value="audi">Audi</option>
-                            </select>
-                        </div>
-                        <button type="submit" className="btn btn-success mt-2">Create</button>
-                    </form>
+                    <PostForm 
+                    buttonName={'Create'} 
+                    submitHandler={createPostFormSubmitHandler} 
+                    onTitleBlurHandler={onTitleBlurHandler} 
+                    titleErrorMessage={titleErrorMessage} 
+                    contentErrorMessage={contentErrorMessage} />
                 </div>
             </div>
         </>
