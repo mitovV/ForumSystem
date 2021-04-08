@@ -24,7 +24,17 @@ const getCommentsCount = (id) => {
 }
 
 const update = (_id, title, content, category) => {
-  return  Post.findOneAndUpdate({_id}, {title, content, category})
+  return  Post.findOneAndUpdate({_id}, {
+      title,
+      content,
+      category,
+      createdOn: Date.now()
+    })
+}
+
+const deleteById = (_id) => {
+    console.log(_id);
+    return Post.findByIdAndDelete(_id)
 }
 
 module.exports = {
@@ -32,5 +42,6 @@ module.exports = {
     allByCategory,
     byId,
     getCommentsCount,
-    update
+    update,
+    deleteById
 }

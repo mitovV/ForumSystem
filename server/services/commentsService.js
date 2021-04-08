@@ -13,7 +13,25 @@ const getCommentsByParentAndPostId = (postId, parentId) => {
     return comments
 }
 
+const getById = (id) => {
+    return Comment.findById(id).populate('creator')
+}
+
+const update = (_id, content) => {
+    return Comment.findOneAndUpdate({_id}, {
+        content,
+        createdOn: Date.now()
+      })
+  }
+
+const deleteById = (_id) => {
+    return Comment.findByIdAndDelete(_id)
+}
+
 module.exports = {
     create,
-    getCommentsByParentAndPostId
+    getCommentsByParentAndPostId,
+    getById,
+    update,
+    deleteById
 }

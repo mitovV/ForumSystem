@@ -15,6 +15,7 @@ import Posts from './components/Posts'
 import Post from './components/Post'
 import CreatePost from './components/CreatePost'
 import EditPost from './components/EditPost'
+import DeletePost from './components/DeletePost'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -34,6 +35,7 @@ function App() {
         <Route path="/posts/create" component={CreatePost}/>
         <Route path="/posts/:id" exact component={Post}/>
         <Route path="/posts/:id/edit" component={EditPost}/>
+        <Route path="/posts/:id/delete" component={DeletePost}/>
         <Route path="/" exact component={Home}/>
       </Switch>
       <Footer/>

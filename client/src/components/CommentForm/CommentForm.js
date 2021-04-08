@@ -1,11 +1,12 @@
 import { useRef, useEffect, useContext } from 'react'
+import { Redirect } from 'react-router-dom';
 import { Editor } from '@tinymce/tinymce-react'
 
 import userContext from '../../contexts/userContext'
 
 import * as commentsService from '../../services/commentsService'
 
-const CommentForm = ({ available, postId, parentId }, history) => {
+const CommentForm = ({ available, postId, parentId }) => {
     const ref = useRef(null)
     const [user] = useContext(userContext)
 
@@ -24,9 +25,13 @@ const CommentForm = ({ available, postId, parentId }, history) => {
         let content = e.target.content.value
         parentId = parentId === postId ? null : parentId
 
+        //TODO: Fix 
         commentsService.crate(postId, parentId, content, user.token)
-        .then(history.push(`/posts/${postId}`))
-        .catch(console.log)
+            .then(res => {
+                console.log(res);
+               return <Redirect push to={`/posts/${postId}`}/>
+        })
+            .catch(console.log)
     }
 
     return (

@@ -6,7 +6,7 @@ import CommentForm from '../CommentForm'
 import * as postsService from '../../services/postsService'
 
 const Post = ({
-    match
+    match,
 }) => {
     const [post, setPost] = useState({
         title: '',

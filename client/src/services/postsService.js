@@ -47,3 +47,12 @@ export const update = (id, title, content, category, token) => {
     })
         .then(res => res.json())
 }
+
+export const deleteById = (id, token) => {
+    return fetch(url + `/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
+    })
+}

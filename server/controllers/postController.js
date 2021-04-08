@@ -43,5 +43,12 @@ router.put('/:id', (req, res) => {
     .catch(console.log)
 })
 
+router.delete('/:id', isAuth, (req, res) => {
+    postsService
+    .deleteById(req.params.id)
+    .then(res.status(204).end())
+    .catch(console.log)
+})
+
 
 module.exports = router
