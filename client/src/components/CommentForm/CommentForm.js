@@ -1,12 +1,22 @@
-import { useRef, useEffect, useContext } from 'react'
-import { Redirect } from 'react-router-dom';
+import { useRef, useEffect, useContext, useState } from 'react'
 import { Editor } from '@tinymce/tinymce-react'
+
+import InputError from '../Shared/InputError'
 
 import userContext from '../../contexts/userContext'
 
 import * as commentsService from '../../services/commentsService'
 
-const CommentForm = ({ available, postId, parentId }) => {
+const CommentForm = ({ 
+    available,
+    postId,
+    parentId,
+    setAvailable,
+    setScroll,
+    scroll 
+}) => {
+    const [contentErrorMessage, setConstentErrorMessage] = useState('')
+
     const ref = useRef(null)
     const [user] = useContext(userContext)
 
@@ -17,7 +27,7 @@ const CommentForm = ({ available, postId, parentId }) => {
 
     }, [available])
 
-    if (!available) return null;
+    if (!available) return null
 
     const onAddCommentHandler = (e) => {
         e.preventDefault()
@@ -25,18 +35,24 @@ const CommentForm = ({ available, postId, parentId }) => {
         let content = e.target.content.value
         parentId = parentId === postId ? null : parentId
 
-        //TODO: Fix 
+        if (content < 10) {
+            return setConstentErrorMessage('Content must contain at least 10 characters.')
+        }else{
+            setConstentErrorMessage('')
+        }
+
         commentsService.crate(postId, parentId, content, user.token)
             .then(res => {
-                console.log(res);
-               return <Redirect push to={`/posts/${postId}`}/>
-        })
+                setAvailable(!available)
+                setScroll(!scroll)
+            })
             .catch(console.log)
     }
 
     return (
         <form onSubmit={onAddCommentHandler}>
             <div>
+            <InputError>{contentErrorMessage}</InputError>
                 <label htmlFor="content" className="text-primary">Write comment</label>
                 <Editor id="content" name="content" className="form-control"></Editor>
             </div>
