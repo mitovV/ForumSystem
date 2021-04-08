@@ -35,12 +35,24 @@ const login = async (username, password) => {
 }
 
 const getUsername = (username) => {
-    return User.find({ username })
+    return User.findOne({ username })
         .select('username')
+        .select('pictureUrl')
+}
+
+const update = (_id, username, pictureUrl, password) => {
+    pictureUrl = pictureUrl || DEFAULT_USER_PICTURE
+    
+    return  User.findOneAndUpdate({_id}, {
+        username,
+        pictureUrl,
+        password,
+      })
 }
 
 module.exports = {
     register,
     login,
-    getUsername
+    getUsername,
+    update
 }
