@@ -33,8 +33,11 @@ const update = (_id, title, content, category) => {
 }
 
 const deleteById = (_id) => {
-    console.log(_id);
     return Post.findByIdAndDelete(_id)
+}
+
+const getCountByCategoryId = (_id) => {
+    return Post.find({category: _id}).countDocuments()
 }
 
 module.exports = {
@@ -43,5 +46,6 @@ module.exports = {
     byId,
     getCommentsCount,
     update,
-    deleteById
+    deleteById,
+    getCountByCategoryId
 }

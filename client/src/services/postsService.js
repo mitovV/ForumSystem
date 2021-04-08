@@ -56,3 +56,9 @@ export const deleteById = (id, token) => {
         },
     })
 }
+
+export const getAllByCategoryId = (id) => {
+    return fetch(url + `/category/${id}`)
+        .then(res => res.json())
+        .catch(err => console.log(err))
+}

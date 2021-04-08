@@ -21,7 +21,6 @@ class Home extends Component {
             .then(categories => {
                 this.setState({ categories })
             })
-
     }
 
     render() {
@@ -33,9 +32,13 @@ class Home extends Component {
                         <h3 className="text-info mb-3">Create new post</h3>
                     </Link>
                     : ''}
-                <div className="row justify-content-center">
-                    {this.state.categories.map(x => <Category key={x._id} {...x} />)}
-                </div>
+                {this.state.categories.length > 0
+                    ? <div className="row justify-content-center">
+                        {this.state.categories.map(x => <Category key={x._id} {...x} />)}
+                    </div>
+                    : <h3 className="text-info mb-3">Loading...</h3>
+                }
+
             </>
         )
     }

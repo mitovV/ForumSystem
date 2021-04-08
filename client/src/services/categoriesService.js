@@ -11,3 +11,9 @@ export const getOne = (id) => {
         .then(res => res.json())
         .catch(err => console.log(err))
 }
+
+export const getPostsCount  = (id) => {
+    return fetch(url + `/${id}/posts/count`)
+        .then(res => res.json())
+        .catch(err => console.log(err))
+}
