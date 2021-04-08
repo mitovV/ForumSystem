@@ -9,25 +9,32 @@ import sanitizedHTML from 'sanitize-html'
 import Comments from './Comments'
 
 import * as categoriesService from '../../services/categoriesService'
+import * as postsService from '../../services/postsService'
 
 const Posts = ({
     match
 }) => {
     const regex = new RegExp('<[^>]+>','gm')
     
-    const [category, setCategory] = useState({ posts: [] })
+    const [category, setCategory] = useState({ })
+    const [posts, setPosts] = useState([])
 
     useEffect(() =>
         categoriesService.getOne(match.params.id)
-            .then(res => setCategory(res))
+            .then(res => {
+                setCategory(res)
+                postsService.getAllByCategoryId(match.params.id)
+                .then(setPosts)
+            })
+            .catch(console.log)
         , [match.params.id])
 
     return (
         <>
             <h1 className="text-primary">{category.name}</h1>
-            {category.posts.length === 0 
+            {posts.length === 0 
             ? <h2 className="text-info"> Тhere are no posts yet!</h2> 
-            : category.posts.map(x =>
+            : posts.map(x =>
                 <div key={x._id} className="media-body mr-2 bg-light">
                     <h4 className="media-heading"><Link to={`/posts/${x._id}`} className="text-dark">{x.title}</Link></h4>
                     <p dangerouslySetInnerHTML={{

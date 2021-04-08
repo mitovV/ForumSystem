@@ -11,12 +11,7 @@ const all = () => {
 }
 
 const byId = (id) => {
-    return Category.findById(id).populate({
-        path: 'posts',
-        populate: {
-            path: 'creator',
-        }
-    })
+    return Category.findById(id)
 }
 
 module.exports = {

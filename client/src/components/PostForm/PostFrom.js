@@ -17,6 +17,7 @@ const PostForm = ({
     titleErrorMessage,
     contentErrorMessage,
     readOnly,
+    createForm
 }) => {
 
     const [categories, setCategories] = useState([])
@@ -42,7 +43,7 @@ const PostForm = ({
 
     return (
         <form onSubmit={submitHandler}>
-            { title ?
+            { title || createForm ?
                 <div>
                     <label htmlFor="title">Title</label>
                     <input id="title" name="title" className="form-control" readOnly={readOnly} onBlur={onTitleBlurHandler} defaultValue={title} />
@@ -61,7 +62,7 @@ const PostForm = ({
                     disabled ={readOnly} />
                 <InputError>{contentErrorMessage}</InputError>
             </div>
-            {category
+            {category || createForm
                 ? <div>
                     <label htmlFor="categoryId">Category</label>
                     <select name="category" className="form-control" value={updatedCategory} onChange={onCategoryChangedHandler} disabled={readOnly}>
@@ -71,7 +72,6 @@ const PostForm = ({
                     </select>
                 </div>
                 : ''}
-
             <button type="submit" className={`${classesBtn}`}>{buttonName}</button>
         </form>
     )

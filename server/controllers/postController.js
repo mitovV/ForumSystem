@@ -12,9 +12,8 @@ router.post('/', isAuth, (req, res) => {
         .catch(err => res.status(400).json({ err }))
 })
 
-router.get('/', (req, res) => {
-    let { id } = req.body
-    postsService.allByCategory(id)
+router.get('/category/:id', (req, res) => {
+    postsService.allByCategory(req.params.id)
         .then(posts => {
             res.status(200).json(posts)
         })

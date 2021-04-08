@@ -12,7 +12,7 @@ const create = async (title, content, creator, category) => {
 }
 
 const allByCategory = (id) => {
-    return Post.find({ category: id });
+    return Post.find({ category: id }).populate('creator');
 }
 
 const byId = (id) => {

@@ -56,11 +56,14 @@ const CreatePost = ({
             <div className="row justify-content-center">
                 <div className="col-md-6">
                     <PostForm 
+                    classesBtn={'btn btn-primary mt-2'}
                     buttonName={'Create'} 
                     submitHandler={createPostFormSubmitHandler} 
                     onTitleBlurHandler={onTitleBlurHandler} 
                     titleErrorMessage={titleErrorMessage} 
-                    contentErrorMessage={contentErrorMessage} />
+                    contentErrorMessage={contentErrorMessage} 
+                    readOnly={false} 
+                    createForm={true}/>
                 </div>
             </div>
         </>
