@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Switch, Route, Redirect} from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import './App.css';
@@ -18,6 +18,7 @@ import EditPost from './components/EditPost'
 import DeletePost from './components/DeletePost'
 import UserDetails from './components/UserDetails'
 import DeleteProfile from './components/DeleteProfile'
+import ErrorBoundary from './components/ErrorBoundary'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -25,24 +26,26 @@ function App() {
   return (
     <div className="App">
       <userContext.Provider value={[user, setUser]}>
-      <Header/>
-      <Switch>
-        <Route path="/users/login" component={Login}/>
-        <Route path="/users/logout" render={props => {
-          setUser(null)
-          return <Redirect to="/"/>
-        }}/>
-        <Route path="/users/register" component={Register}/>
-        <Route path="/users/details" component={UserDetails}/>
-        <Route path="/users/profile/:id/delete" component={DeleteProfile}/>
-        <Route path="/categories/:id" component={Posts}/>
-        <Route path="/posts/create" component={CreatePost}/>
-        <Route path="/posts/:id" exact component={Post}/>
-        <Route path="/posts/:id/edit" component={EditPost}/>
-        <Route path="/posts/:id/delete" component={DeletePost}/>
-        <Route path="/" exact component={Home}/>
-      </Switch>
-      <Footer/>
+        <Header />
+        <ErrorBoundary>
+          <Switch>
+            <Route path="/users/login" component={Login} />
+            <Route path="/users/logout" render={props => {
+              setUser(null)
+              return <Redirect to="/" />
+            }} />
+            <Route path="/users/register" component={Register} />
+            <Route path="/users/details" component={UserDetails} />
+            <Route path="/users/profile/:id/delete" component={DeleteProfile} />
+            <Route path="/categories/:id" component={Posts} />
+            <Route path="/posts/create" component={CreatePost} />
+            <Route path="/posts/:id" exact component={Post} />
+            <Route path="/posts/:id/edit" component={EditPost} />
+            <Route path="/posts/:id/delete" component={DeletePost} />
+            <Route path="/" exact component={Home} />
+          </Switch>
+        </ErrorBoundary>
+        <Footer />
       </userContext.Provider>
     </div>
   );
