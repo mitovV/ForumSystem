@@ -24,7 +24,7 @@ const Post = ({
                 setPost(res)
              window.scrollTo(0, 0)
             })
-    }, [scroll])
+    }, [scroll, match.params.id])
 
     useEffect(() =>
         postsService.getById(match.params.id)

@@ -16,4 +16,11 @@ router.put('/:id', isAuth, (req, res) => {
     )
 })
 
+router.delete ('/:id', isAuth, (req, res) => {
+    usersService
+    .deleteById(req.params.id)
+    .then(res.status(204).end())
+    .catch(console.log)
+})
+
 module.exports = router

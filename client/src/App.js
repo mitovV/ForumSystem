@@ -17,6 +17,7 @@ import CreatePost from './components/CreatePost'
 import EditPost from './components/EditPost'
 import DeletePost from './components/DeletePost'
 import UserDetails from './components/UserDetails'
+import DeleteProfile from './components/DeleteProfile'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -33,6 +34,7 @@ function App() {
         }}/>
         <Route path="/users/register" component={Register}/>
         <Route path="/users/details" component={UserDetails}/>
+        <Route path="/users/profile/:id/delete" component={DeleteProfile}/>
         <Route path="/categories/:id" component={Posts}/>
         <Route path="/posts/create" component={CreatePost}/>
         <Route path="/posts/:id" exact component={Post}/>

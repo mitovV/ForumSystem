@@ -63,9 +63,14 @@ const update = (_id, username, pictureUrl, password) => {
     }, {new: true})
 }
 
+const deleteById = (id) => {
+    return User.findByIdAndDelete(id)
+}
+
 module.exports = {
     register,
     login,
     getUsername,
-    update
+    update,
+    deleteById
 }
