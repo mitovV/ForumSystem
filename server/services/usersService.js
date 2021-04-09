@@ -1,7 +1,7 @@
 const User = require("../models/User")
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const { SECRET, DEFAULT_USER_PICTURE } = require('../config/config')
+const { SECRET, DEFAULT_USER_PICTURE, SALT_ROUNDS } = require('../config/config')
 
 const register = (username, password, pictureUrl) => {
     pictureUrl = pictureUrl || DEFAULT_USER_PICTURE
@@ -42,12 +42,25 @@ const getUsername = (username) => {
 
 const update = (_id, username, pictureUrl, password) => {
     pictureUrl = pictureUrl || DEFAULT_USER_PICTURE
-    
-    return  User.findOneAndUpdate({_id}, {
+
+    if (password) {
+        bcrypt.genSalt(SALT_ROUNDS)
+            .then(salt => bcrypt.hash(password, salt))
+            .then(hash => {
+                password = hash
+
+                return User.findOneAndUpdate({ _id }, {
+                    username,
+                    pictureUrl,
+                    password,
+                }, {new: true})
+            })
+    }
+
+    return User.findOneAndUpdate({ _id }, {
         username,
         pictureUrl,
-        password,
-      })
+    }, {new: true})
 }
 
 module.exports = {

@@ -12,7 +12,8 @@ router.put('/:id', isAuth, (req, res) => {
     let {username, imageUrl, password} = req.body
 
     usersService.update(req.params.id, username, imageUrl, password)
-    .then(res.status(200).end())
+    .then(user => res.status(200).json({_id: user._id, username: user.username})
+    )
 })
 
 module.exports = router

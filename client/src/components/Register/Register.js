@@ -18,7 +18,7 @@ const Register = ({
             if (username.length < 2) {
                 setUsernameMessage('Username must contain at least 2 characters.')
             }
-            else if (res.length > 0){
+            else if (res){
                 setUsernameMessage('Username already exists.')
             }
             else {
@@ -58,7 +58,7 @@ const Register = ({
             if (username.length < 2) {
                 setUsernameMessage('Username must contain at least 2 characters.')
             }
-            else if (res.length > 0){
+            else if (res){
                 setUsernameMessage('Username already exists.')
             }
             else {
@@ -82,10 +82,7 @@ const Register = ({
     
             if (!usernameMessage && !passwordMessage && !confirmPasswordMessage) {
                 authService.register(username, password, imageUrl)
-                    .then(res => 
-
-                        history.push('/users/login')
-                        )
+                    .then(history.push('/users/login'))
                     .catch(res => console.log(res.json()))
             }
         })

@@ -11,7 +11,7 @@ const Login = ({
     history
 }) => {
     const [errorMessage, setErrorMessage] = useState('')
-    const [user, setUser] = useContext(userContext)
+    const [, setUser] = useContext(userContext)
 
     const onSubmitLoginHandler = (e) => {
         e.preventDefault()

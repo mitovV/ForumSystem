@@ -5,10 +5,11 @@ export const getByUsername = (username) => {
     .then(res => res.json())
 }
 
-export const update = (id, username, imageUrl, token) => {
+export const update = (id, username, imageUrl, password, token) => {
     let user = {
         username,
-        imageUrl
+        imageUrl,
+        password
     }
     
     return fetch(url + `/${id}`, {
@@ -19,4 +20,5 @@ export const update = (id, username, imageUrl, token) => {
         },
         body: JSON.stringify(user)
     })
+    .then(res => res.json())
 }

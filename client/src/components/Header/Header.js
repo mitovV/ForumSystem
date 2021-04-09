@@ -6,7 +6,7 @@ import userContext from '../../contexts/userContext'
 import './Header.css'
 
 const Header = () => {
-  const [user, setUser] = useContext(userContext)
+  const [user] = useContext(userContext)
 
   return (
     <nav className="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-primary border-bottom box-shadow mb-3">

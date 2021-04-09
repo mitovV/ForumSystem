@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import userContext from '../../contexts/userContext'
 
@@ -7,7 +8,7 @@ import InputError from '../Shared/InputError'
 import * as usersService from '../../services/usersService'
 
 const UserDetails = () => {
-    const [user] = useContext(userContext)
+    const [user, setUser] = useContext(userContext)
     const [userDetails, setUserDetails] = useState({})
     const [usernameMessage, setUsernameMessage] = useState('')
     const [passwordMessage, setPasswordMessage] = useState('')
@@ -15,33 +16,24 @@ const UserDetails = () => {
 
     useEffect(() => {
         usersService
-        .getByUsername(user.username)
-        .then(setUserDetails)
-    }, [])
+            .getByUsername(user.username)
+            .then(setUserDetails)
+    }, [user])
 
     const onUsernameBlurHandler = (e) => {
         let username = e.target.value
 
-        usersService.getByUsername(username).then(res => {            
+        usersService.getByUsername(username).then(res => {
             if (username.length < 2) {
                 setUsernameMessage('Username must contain at least 2 characters.')
             }
-            else if (res.length > 0){
+            else if (res) {
                 setUsernameMessage('Username already exists.')
             }
             else {
                 setUsernameMessage('')
             }
         })
-    }
-    
-    const onFormSubmitHandler = (e) =>  {
-        e.preventDefault()
-        let username = e.target.username.value
-        let imageUrl = e.target.imageUrl.value
-
-        console.log(username);
-        console.log(imageUrl);
     }
 
     const onPasswordBlurHandler = (e) => {
@@ -62,6 +54,78 @@ const UserDetails = () => {
         }
     }
 
+    const onFormSubmitHandler = (e) => {
+        e.preventDefault()
+
+        let username = e.target.username.value
+
+        if (username !== user.username) {
+            usersService.getByUsername(username).then(res => {
+
+                let imageUrl = e.target.imageUrl.value
+                let password = e.target.password.value
+                let confirmPassword = e.target.confirmPassword.value
+    
+                if (username.length < 2) {
+                    setUsernameMessage('Username must contain at least 2 characters.')
+                }
+                else if (res) {
+                    setUsernameMessage('Username already exists.')
+                }
+                else {
+                    setUsernameMessage('')
+                }
+    
+                if (password) {
+                    if (password.length < 5) {
+                        setPasswordMessage('Password must contain at least 5 characters.')
+                    }
+                    else {
+                        setPasswordMessage('')
+                    }
+                    if (confirmPassword !== password || confirmPassword.length === 0) {
+                        return setConfirmPasswordMessage('Passwords mismatch')
+                    }
+                    else {
+                        setConfirmPasswordMessage('')
+                    }
+                }
+    
+                if (!usernameMessage && !passwordMessage && !confirmPasswordMessage) {
+                    usersService.update(user._id, username, imageUrl, password, user.token)
+                        .then(res => setUser({...user, ...res}))
+                        .catch(console.log)
+                }
+            })
+        }
+        else{
+            let imageUrl = e.target.imageUrl.value
+            let password = e.target.password.value
+            let confirmPassword = e.target.confirmPassword.value
+
+            if (password) {
+                if (password.length < 5) {
+                    setPasswordMessage('Password must contain at least 5 characters.')
+                }
+                else {
+                    setPasswordMessage('')
+                }
+                if (confirmPassword !== password || confirmPassword.length === 0) {
+                    return setConfirmPasswordMessage('Passwords mismatch')
+                }
+                else {
+                    setConfirmPasswordMessage('')
+                }
+            }
+
+            if (!usernameMessage && !passwordMessage && !confirmPasswordMessage) {
+                usersService.update(user._id, username, imageUrl, password, user.token)
+                    .then(res => setUser({...user, ...res}))
+                    .catch(console.log)
+            }
+        }
+    }
+    
     return (
         <>
             <h4 className="center text-primary">Profile</h4>
@@ -71,7 +135,7 @@ const UserDetails = () => {
                     <form onSubmit={onFormSubmitHandler}>
                         <div className="input-field mt-2">
                             <label htmlFor="username">Usename</label>
-                            <input id="username" name="usename" className="form-control" defaultValue={userDetails.username} onBlur={onUsernameBlurHandler}/>
+                            <input id="username" name="usename" className="form-control" defaultValue={userDetails.username} onBlur={onUsernameBlurHandler} />
                             <InputError>{usernameMessage}</InputError>
                         </div>
                         <div className="input-field">
@@ -85,12 +149,12 @@ const UserDetails = () => {
                         </div>
                         <div className="form-group">
                             <label htmlFor="confirmPassword">Confirm Password</label>
-                            <input type="password" id="confirmPassword" name="confirmPassword" className="form-control" onBlur={onConfirmPasswordBlurHandler}/>
+                            <input type="password" id="confirmPassword" name="confirmPassword" className="form-control" onBlur={onConfirmPasswordBlurHandler} />
                             <InputError>{confirmPasswordMessage}</InputError>
                         </div>
                         <div>
                             <button type="submit" className="btn btn-info mt-2">Save</button>
-                            <button type="button" className="btn btn-danger mt-2 ml-2">Delete</button>
+                            <Link to={`/users/profile/${user._id}/delete`} type="button" className="btn btn-danger mt-2 ml-2">Delete</Link>
                         </div>
                     </form>
                 </div>
