@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import userContext from '../contexts/userContext'
 
-const IsAuth = (InnerComponent) => {
+const isAuth = (InnerComponent) => {
     const OuterComponent = (props) => {
         const [user] = useContext(userContext)
         const hisroy = useHistory()
@@ -18,4 +18,4 @@ const IsAuth = (InnerComponent) => {
     return OuterComponent
 }
 
-export default IsAuth
+export default isAuth

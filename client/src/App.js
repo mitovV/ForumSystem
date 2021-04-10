@@ -19,7 +19,7 @@ import DeletePost from './components/DeletePost'
 import UserDetails from './components/UserDetails'
 import DeleteProfile from './components/DeleteProfile'
 import ErrorBoundary from './components/ErrorBoundary'
-import IsAuth from './hoc/IsAuth'
+import isAuth from './hoc/isAuth'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -36,13 +36,13 @@ function App() {
               return <Redirect to="/" />
             }} />
             <Route path="/users/register" component={Register} />
-            <Route path="/users/details" component={IsAuth(UserDetails)} />
-            <Route path="/users/profile/:id/delete" component={IsAuth(DeleteProfile)} />
+            <Route path="/users/details" component={isAuth(UserDetails)} />
+            <Route path="/users/profile/:id/delete" component={isAuth(DeleteProfile)} />
             <Route path="/categories/:id" component={Posts} />
-            <Route path="/posts/create" component={IsAuth(CreatePost)} />
+            <Route path="/posts/create" component={isAuth(CreatePost)} />
             <Route path="/posts/:id" exact component={Post} />
-            <Route path="/posts/:id/edit" component={IsAuth(EditPost)} />
-            <Route path="/posts/:id/delete" component={IsAuth(DeletePost)} />
+            <Route path="/posts/:id/edit" component={isAuth(EditPost)} />
+            <Route path="/posts/:id/delete" component={isAuth(DeletePost)} />
             <Route path="/" exact component={Home} />
           </Switch>
         </ErrorBoundary>
