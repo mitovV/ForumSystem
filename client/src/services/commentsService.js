@@ -1,4 +1,6 @@
-const url = 'http://localhost:5000/api/comments'
+const { SERVER_URL }  = require('../constants/constants');
+
+const url = SERVER_URL + 'comments';
 
 export const getCommentsByParentAndPostId = (postId, parentId) => {
     if(!parentId){

@@ -1,4 +1,6 @@
-const url = 'http://localhost:5000/api/auth'
+const { SERVER_URL }  = require('../constants/constants');
+
+const url = SERVER_URL + 'auth';
 
 export const register = (username, password, pictureUrl) => {
     let user = {

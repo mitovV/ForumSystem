@@ -1,4 +1,6 @@
-const url = 'http://localhost:5000/api/posts'
+const { SERVER_URL }  = require('../constants/constants');
+
+const url = SERVER_URL + 'posts';
 
 export const getById = (id) => {
     return fetch(url + `/${id}`)

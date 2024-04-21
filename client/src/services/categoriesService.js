@@ -1,4 +1,6 @@
-const url = 'http://localhost:5000/api/categories'
+const { SERVER_URL }  = require('../constants/constants');
+
+let url = SERVER_URL + 'categories';
 
 export const getAll = () => {
     return fetch(url)

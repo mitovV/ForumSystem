@@ -1,4 +1,6 @@
-const url = 'http://localhost:5000/api/users'
+const { SERVER_URL }  = require('../constants/constants');
+
+const url = SERVER_URL + 'users';
 
 export const getByUsername = (username) => {
     return fetch(url + `/${username}`)
