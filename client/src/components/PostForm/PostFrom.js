@@ -4,7 +4,7 @@ import InputError from '../Shared/InputError'
 import Option from '../Option'
 import { Editor } from '@tinymce/tinymce-react'
 
-import { TinyMCEKey } from '../../config/config'
+import config from '../../config/config'
 
 import * as categoresService from '../../services/categoriesService'
 
@@ -56,7 +56,7 @@ const PostForm = ({
             <div>
                 <label htmlFor="content">Content</label>
                 <Editor
-                    apiKey={TinyMCEKey}
+                    apiKey={config.TinyMCEKey}
                     id="content"
                     name="content"
                     className="form-control"
