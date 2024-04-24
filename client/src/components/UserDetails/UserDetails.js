@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import userContext from '../../contexts/userContext'
 
 import InputError from '../Shared/InputError'
+import './UserDetails.css'
 
 import * as usersService from '../../services/usersService'
 
@@ -152,7 +153,7 @@ const UserDetails = () => {
                             <input type="password" id="confirmPassword" name="confirmPassword" className="form-control" onBlur={onConfirmPasswordBlurHandler} />
                             <InputError>{confirmPasswordMessage}</InputError>
                         </div>
-                        <div>
+                        <div className="user-details-button">
                             <button type="submit" className="btn btn-info mt-2">Save</button>
                             <Link to={`/users/profile/${user._id}/delete`} type="button" className="btn btn-danger mt-2 ml-2">Delete</Link>
                         </div>

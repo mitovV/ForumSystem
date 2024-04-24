@@ -25,7 +25,7 @@ function App() {
   const [user, setUser] = useState(null)
 
   return (
-    <div className="App">
+    <div id="content-wrap" className="App">
       <userContext.Provider value={[user, setUser]}>
         <Header />
         <ErrorBoundary>

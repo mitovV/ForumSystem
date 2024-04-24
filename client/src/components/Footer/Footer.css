@@ -1,13 +1,9 @@
-footer{
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    height: 10%;
-    width: 100%;
-    color: white;
-    text-align: center;
-}
 footer div{
     margin-top: 25px;
     margin-bottom: 25px;
 }
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
