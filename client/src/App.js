@@ -18,6 +18,7 @@ import EditPost from './components/EditPost'
 import DeletePost from './components/DeletePost'
 import UserDetails from './components/UserDetails'
 import DeleteProfile from './components/DeleteProfile'
+import PageNotFound from './components/PageNotFound'
 import ErrorBoundary from './components/ErrorBoundary'
 import isAuth from './hoc/isAuth'
 
@@ -44,6 +45,7 @@ function App() {
             <Route path="/posts/:id/edit" component={isAuth(EditPost)} />
             <Route path="/posts/:id/delete" component={isAuth(DeletePost)} />
             <Route path="/" exact component={Home} />
+            <Route path="*" component={PageNotFound} />
           </Switch>
         </ErrorBoundary>
         <Footer />
