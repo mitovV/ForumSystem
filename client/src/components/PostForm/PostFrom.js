@@ -4,7 +4,7 @@ import InputError from '../Shared/InputError'
 import Option from '../Option'
 import { Editor } from '@tinymce/tinymce-react'
 
-import config from '../../config/config'
+import config from '../../config/config.Development'
 
 import * as categoresService from '../../services/categoriesService'
 

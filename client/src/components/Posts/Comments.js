@@ -15,7 +15,7 @@ const Comments = ({ postId }) => {
 
     return (
         <li className="list-inline-item">
-            <FcComments /> {length} comments
+            <FcComments /> {length} {length < 2 ? 'comment' : 'comments'}
         </li>)
 }
 
