@@ -1,9 +1,13 @@
 footer div{
     margin-top: 25px;
     margin-bottom: 25px;
+
 }
 #footer {
     position: absolute;
     bottom: 0;
     width: 100%;
+    background-color: #278db8;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }

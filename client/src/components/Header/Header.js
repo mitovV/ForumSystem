@@ -9,7 +9,7 @@ const Header = () => {
   const [user] = useContext(userContext)
 
   return (
-    <nav className="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-primary border-bottom box-shadow mb-3">
+    <nav className="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style={{backgroundImage : 'url(/header.jpg)'}}>
       <div className="container">
         <Link className="navbar-brand text-white" to="/" >Forum System</Link>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
