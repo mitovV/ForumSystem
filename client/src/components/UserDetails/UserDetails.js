@@ -129,7 +129,7 @@ const UserDetails = () => {
     
     return (
         <>
-            <h4 className="center text-primary">Profile</h4>
+            <h2 className="center text-primary">Profile</h2>
             <div className="row justify-content-center">
                 <div className="col-md-4">
                     <img className="responsive-img" src={userDetails.pictureUrl} width="300" alt="User" />
