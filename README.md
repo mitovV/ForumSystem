@@ -28,3 +28,8 @@ ReactJs project
 ### Profile
 
 ![profile](https://github.com/mitovV/ForumSystem/assets/43573153/74e7fea6-ee6f-4979-b1a6-591edb028ea3)
+
+### Posts
+
+![Posts](https://github.com/mitovV/ForumSystem/assets/43573153/d79b933b-5127-479a-8570-26d02c85553f)
+
