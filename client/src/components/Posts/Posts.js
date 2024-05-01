@@ -11,6 +11,8 @@ import Comments from './Comments'
 import * as categoriesService from '../../services/categoriesService'
 import * as postsService from '../../services/postsService'
 
+import './Posts.css'
+
 const Posts = ({
     match
 }) => {
@@ -35,8 +37,8 @@ const Posts = ({
             {posts.length === 0 
             ? <h2 className="text-info"> Тhere are no posts yet!</h2> 
             : posts.map(x =>
-                <div key={x._id} className="media-body mr-2 bg-light">
-                    <h4 className="media-heading"><Link to={`/posts/${x._id}`} className="text-dark">{x.title}</Link></h4>
+                <div key={x._id} className="media-body mr-2 post-wrapper text-white">
+                    <h4 className="media-heading"><Link to={`/posts/${x._id}`} className="text-white">{x.title}</Link></h4>
                     <p dangerouslySetInnerHTML={{
                         __html: `${sanitizedHTML(x.content).replace(regex, '').slice(0, 100)}...`
                     }}></p>
