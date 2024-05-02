@@ -59,7 +59,12 @@ const Card = ({ post, showAddCommentForm }) => {
                                             </div>
                                         </div>
                                         : <div className="text-muted small ml-3">
-                                            <div className="px-4 pt-3"> <button type="button" className="btn btn-primary float-right" onClick={() => showAddCommentForm(post._id)}>Answer</button> </div>
+                                            <div className="px-4 pt-3"> 
+                                            <button type="button" className="btn btn-primary float-right" 
+                                                    onClick={() => showAddCommentForm(post._id)}>
+                                                    Answer
+                                            </button> 
+                                            </div>
                                         </div>
 
                                 }

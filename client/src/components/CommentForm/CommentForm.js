@@ -4,8 +4,11 @@ import { Editor } from '@tinymce/tinymce-react'
 import InputError from '../Shared/InputError'
 
 import userContext from '../../contexts/userContext'
+import config from '../../config/config.Development'
 
 import * as commentsService from '../../services/commentsService'
+
+import './CommentForm.css'
 
 const CommentForm = ({ 
     available,
@@ -50,14 +53,14 @@ const CommentForm = ({
     }
 
     return (
-        <form onSubmit={onAddCommentHandler}>
+        <form onSubmit={onAddCommentHandler} className='comment-form'>
             <div>
             <InputError>{contentErrorMessage}</InputError>
                 <label htmlFor="content" className="text-primary">Write comment</label>
-                <Editor id="content" name="content" className="form-control"></Editor>
+                <Editor key={config.TinyMCEKey} id="content" name="content" className="form-control"></Editor>
             </div>
             <div>
-                <input ref={ref} type="submit" className="btn btn-primary mt-2" value="Add comment" />
+                <input ref={ref} type="submit" className="btn btn-primary mt-2 comment-form-button" value="Add comment" />
             </div>
         </form>
     )
