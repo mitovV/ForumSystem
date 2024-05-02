@@ -1,10 +1,13 @@
 .media-body{
     font-size: 25px;
-    color: #6F00FF;
+    color: #fc05e8;
 }
 .text-muted time{
-    color: #6F00FF;
+    color: #fc05e8;
 }
 .card{
     border-color: #6F00FF;
+}
+.card-body{
+    background-color:#fefcf4;
 }
