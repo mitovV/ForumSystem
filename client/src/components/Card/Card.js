@@ -10,6 +10,8 @@ import * as commentsService from '../../services/commentsService'
 import PostDetails from '../PostDetails'
 import { Link } from 'react-router-dom'
 
+import './Card.css'
+
 const Card = ({ post, showAddCommentForm }) => {
     const [comments, setComments] = useState([])
     const [user] = useContext(userContext)
@@ -35,7 +37,7 @@ const Card = ({ post, showAddCommentForm }) => {
             <div className="row">
                 <div className="col-md-12">
                     <div className="card mb-4 mt-2">
-                        <div className="card-header">
+                        <div className="card-header" style={{backgroundImage : 'url(/post-header.jpg)'}}>
                             <div className="media flex-wrap w-100 align-items-center">
                                 <img src={post.creator.pictureUrl} width="40" className="d-block ui-w-40 rounded-circle" alt="user" />
                                 <div className="media-body ml-3">

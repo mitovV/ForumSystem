@@ -45,7 +45,7 @@ const PostForm = ({
 
     return (
         <form onSubmit={submitHandler}>
-            { title || createForm ?
+            {title || createForm ?
                 <div>
                     <label htmlFor="title">Title</label>
                     <input id="title" name="title" className="form-control" readOnly={readOnly} onBlur={onTitleBlurHandler} defaultValue={title} />
@@ -62,7 +62,10 @@ const PostForm = ({
                     className="form-control"
                     value={updatedContent}
                     onEditorChange={onContentChangedHandler}
-                    disabled ={readOnly} />
+                    disabled={readOnly}
+                    init={{
+                        content_style: 'body{font-family: cursive;}'
+                    }} />
                 <InputError>{contentErrorMessage}</InputError>
             </div>
             {category || createForm

@@ -18,8 +18,8 @@ const CommentForm = ({
     setScroll,
     scroll 
 }) => {
-    const [contentErrorMessage, setConstentErrorMessage] = useState('')
-
+    const [contentErrorMessage, setContentErrorMessage] = useState('')
+    
     const ref = useRef(null)
     const [user] = useContext(userContext)
 
@@ -39,9 +39,9 @@ const CommentForm = ({
         parentId = parentId === postId ? null : parentId
 
         if (content < 10) {
-            return setConstentErrorMessage('Content must contain at least 10 characters.')
+            return setContentErrorMessage('Content must contain at least 10 characters.')
         }else{
-            setConstentErrorMessage('')
+            setContentErrorMessage('')
         }
 
         commentsService.crate(postId, parentId, content, user.token)
@@ -57,7 +57,15 @@ const CommentForm = ({
             <div>
             <InputError>{contentErrorMessage}</InputError>
                 <label htmlFor="content" className="text-primary">Write comment</label>
-                <Editor key={config.TinyMCEKey} id="content" name="content" className="form-control"></Editor>
+                <Editor 
+                    key={config.TinyMCEKey} 
+                    id="content" 
+                    name="content" 
+                    className="form-control">  
+                    init={{
+                        content_style:'body{font-family: cursive;}'
+                    }}
+                </Editor>
             </div>
             <div>
                 <input ref={ref} type="submit" className="btn btn-primary mt-2 comment-form-button" value="Add comment" />

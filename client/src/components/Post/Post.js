@@ -5,6 +5,8 @@ import CommentForm from '../CommentForm'
 
 import * as postsService from '../../services/postsService'
 
+import './Post.css'
+
 const Post = ({
     match,
 }) => {
@@ -42,7 +44,7 @@ const Post = ({
         <>
             { post.title ?
                 <>
-                    <h3>{post.title}</h3>
+                    <h3 className='post-title'>{post.title}</h3>
                     <Card post={post} showAddCommentForm={showAddCommentForm} />
                     <CommentForm available={available} postId={post._id} parentId={parentId} setAvailable={setAvailable} setScroll={setScroll} scroll={scroll}/>
                 </>
