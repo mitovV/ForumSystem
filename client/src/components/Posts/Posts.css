@@ -5,3 +5,6 @@
     margin-right: 15px;
     padding-right: 15px;
 }
+.post-wrapper:last-of-type{
+    margin-bottom: 90px;
+}
