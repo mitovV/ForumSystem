@@ -33,3 +33,7 @@ ReactJs project
 
 ![Posts](https://github.com/mitovV/ForumSystem/assets/43573153/d79b933b-5127-479a-8570-26d02c85553f)
 
+### Post details
+
+![Post details](https://github.com/mitovV/ForumSystem/assets/43573153/8091edcc-9046-4cba-ac91-fae3bdbbad15)
+
