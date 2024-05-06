@@ -1,4 +1,4 @@
-const Comment = require('../models/Comment')
+const Comment = require('../data/models/Comment')
 
 const create = async (postId, parentId, content, creator) => {
     let comment = new Comment({ post: postId, parent: parentId, content, creator })

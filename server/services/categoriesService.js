@@ -1,4 +1,4 @@
-const Category = require('../models/Category')
+const Category = require('../data/models/Category')
 
 const create = (name, pictureUrl, creator) => {
     let category = new Category({ name, pictureUrl, creator })

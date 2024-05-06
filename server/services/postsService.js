@@ -1,6 +1,6 @@
-const Post = require('../models/Post')
-const Category = require('../models/Category')
-const Comment = require('../models/Comment')
+const Post = require('../data/models/Post')
+const Category = require('../data/models/Category')
+const Comment = require('../data/models/Comment')
 
 const create = async (title, content, creator, category) => {
     let post = new Post({ title, content, creator, category })

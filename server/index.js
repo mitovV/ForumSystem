@@ -7,6 +7,7 @@ const app = express()
 
 require('./config/mongoose')
 require('./config/express')(app)
+require('./data/seeding/categoriesSeeder')
 
 app.use('/api', routes)
 
