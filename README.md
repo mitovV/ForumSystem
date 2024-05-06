@@ -19,7 +19,7 @@ ReactJs project
 
 ### Index page
 
-![index](https://github.com/mitovV/ForumSystem/assets/43573153/8bf413c2-226b-4dae-983e-a66f7406263c)
+![index](https://github.com/mitovV/ForumSystem/assets/43573153/fcf4b045-684a-4cc8-a899-d1a4a02589a6)
 
 ### Log in page
 
@@ -32,6 +32,10 @@ ReactJs project
 ### Posts
 
 ![Posts](https://github.com/mitovV/ForumSystem/assets/43573153/d79b933b-5127-479a-8570-26d02c85553f)
+
+### Create Post
+
+![Create post](https://github.com/mitovV/ForumSystem/assets/43573153/c03ed120-83b2-4b38-b7ca-70c7e6b4b096)
 
 ### Post details
 
