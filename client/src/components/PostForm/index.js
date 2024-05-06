@@ -1,3 +1,3 @@
-import PostForm from './PostFrom'
+import PostForm from './PostForm'
 
 export default PostForm

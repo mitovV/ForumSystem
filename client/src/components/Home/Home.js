@@ -31,7 +31,7 @@ class Home extends Component {
                 <h1 className="text-primary mb-3 text-center">Categories</h1>
                 {this.context[0]
                     ? <Link to='/posts/create'>
-                        <h3 className="text-info mb-3">Create new post</h3>
+                        <h3 className="mb-3 create-post">Create new post</h3>
                     </Link>
                     : ''}
                 {this.state.categories.length > 0

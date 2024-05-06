@@ -8,6 +8,8 @@ import config from '../../config/config.Development'
 
 import * as categoresService from '../../services/categoriesService'
 
+import './PostForm.css'
+
 const PostForm = ({
     classesBtn,
     title,
@@ -44,7 +46,7 @@ const PostForm = ({
     }
 
     return (
-        <form onSubmit={submitHandler}>
+        <form onSubmit={submitHandler} className='create-post-form'>
             {title || createForm ?
                 <div>
                     <label htmlFor="title">Title</label>
