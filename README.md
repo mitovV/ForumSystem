@@ -35,7 +35,6 @@ ReactJs project
 
 ### Create Post
 
-![Create post](https://github.com/mitovV/ForumSystem/assets/43573153/c03ed120-83b2-4b38-b7ca-70c7e6b4b096)
 
 ### Post details
 
