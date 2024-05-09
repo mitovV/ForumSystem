@@ -11,3 +11,6 @@
 .card-body{
     background-color:#fefcf4;
 }
+.container-fluid{
+    margin-bottom: 60px;
+}
