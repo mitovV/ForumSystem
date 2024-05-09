@@ -4,6 +4,8 @@ import InputError from '../Shared/InputError'
 import * as authService from '../../services/authService'
 import * as usersService from '../../services/usersService'
 
+import './Register.css'
+
 const Register = ({
     history
 }) => {
@@ -91,7 +93,7 @@ const Register = ({
     return (
         <>
             <h1 className="text-primary">Register</h1>
-            <div className="row justify-content-center">
+            <div className="row justify-content-center register-wrapper">
                 <div className="col-md-4">
                     <form onSubmit={onRegisterSubmitFromHandler}>
                         <h4 className="text-primary">Create a new account.</h4>
