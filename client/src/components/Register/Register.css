@@ -1,3 +1,12 @@
-.register-wrapper{
+.register-wrapper {
     margin-bottom: 80px;
+}
+
+.register-header,
+.register-wrapper label {
+    color: #6F00FF;
+}
+
+.register-wrapper input {
+    color: #38aecf;
 }

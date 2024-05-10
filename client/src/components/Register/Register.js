@@ -92,7 +92,7 @@ const Register = ({
 
     return (
         <>
-            <h1 className="text-primary">Register</h1>
+            <h1 className="register-header">Register</h1>
             <div className="row justify-content-center register-wrapper">
                 <div className="col-md-4">
                     <form onSubmit={onRegisterSubmitFromHandler}>
