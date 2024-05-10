@@ -56,7 +56,7 @@ const CommentForm = ({
         <form onSubmit={onAddCommentHandler} className='comment-form'>
             <div>
             <InputError>{contentErrorMessage}</InputError>
-                <label htmlFor="content" className="text-primary">Write comment</label>
+                <label htmlFor="content" className="form-lable">Write comment</label>
                 <Editor 
                     key={config.TinyMCEKey} 
                     id="content" 

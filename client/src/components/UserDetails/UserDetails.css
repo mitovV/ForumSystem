@@ -1,3 +1,12 @@
-.user-details-button{
+.user-details-button {
     margin-bottom: 80px;
+}
+
+.user-details-form label,
+.user-details-header {
+    color: #6F00FF;
+}
+
+.user-details-form input{
+    color: #38aecf;
 }

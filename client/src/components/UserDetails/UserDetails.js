@@ -129,11 +129,11 @@ const UserDetails = () => {
     
     return (
         <>
-            <h2 className="center text-primary">Profile</h2>
+            <h2 className="center user-details-header">Profile</h2>
             <div className="row justify-content-center">
                 <div className="col-md-4">
                     <img className="responsive-img" src={userDetails.pictureUrl} width="300" alt="User" />
-                    <form onSubmit={onFormSubmitHandler}>
+                    <form onSubmit={onFormSubmitHandler} className='user-details-form'>
                         <div className="input-field mt-2">
                             <label htmlFor="username">Usename</label>
                             <input id="username" name="usename" className="form-control" defaultValue={userDetails.username} onBlur={onUsernameBlurHandler} />
