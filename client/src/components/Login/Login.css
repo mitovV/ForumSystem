@@ -3,6 +3,7 @@
 }
 
 .login-form label,
-.login-form h4 {
+.login-form h4,
+.register-link {
     color: #6F00FF;
 }

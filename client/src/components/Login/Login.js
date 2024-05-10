@@ -58,7 +58,7 @@ const Login = ({
                             </div>
                             <div className="form-group">
                                 <p>
-                                    <Link to="/users/register">Register as a new user</Link>
+                                    <Link className='register-link' to="/users/register">Register as a new user</Link>
                                 </p>
                             </div>
                         </form>
