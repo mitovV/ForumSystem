@@ -96,7 +96,7 @@ const Register = ({
             <div className="row justify-content-center register-wrapper">
                 <div className="col-md-4">
                     <form onSubmit={onRegisterSubmitFromHandler}>
-                        <h4 className="text-primary">Create a new account.</h4>
+                        <h4>Create a new account.</h4>
                         <hr />
                         <div className="form-group">
                             <label htmlFor="username">Username</label>

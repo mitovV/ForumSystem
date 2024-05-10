@@ -3,7 +3,8 @@
 }
 
 .register-header,
-.register-wrapper label {
+.register-wrapper label,
+.register-wrapper h4 {
     color: #6F00FF;
 }
 
