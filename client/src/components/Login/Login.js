@@ -7,6 +7,8 @@ import * as authService from '../../services/authService'
 
 import InputError from '../Shared/InputError'
 
+import './Login.css'
+
 const Login = ({
     history
 }) => {
@@ -35,12 +37,12 @@ const Login = ({
 
     return (
         <>
-            <h1 className="text-primary">Log in</h1>
+            <h1 className="login-header">Log in</h1>
             <div className="row justify-content-center">
                 <div className="col-md-4">
                     <section>
-                        <form onSubmit={onSubmitLoginHandler}>
-                            <h4 className="text-primary">Use a local account to log in.</h4>
+                        <form onSubmit={onSubmitLoginHandler} className='login-form'>
+                            <h4>Use a local account to log in.</h4>
                             <hr />
                             <InputError>{errorMessage}</InputError>
                             <div className="form-group">
