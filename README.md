@@ -23,7 +23,11 @@ ReactJs project
 
 ### Log in page
 
-![log in](https://github.com/mitovV/ForumSystem/assets/43573153/f753b0cd-501d-469b-8148-a88a8cdc2d23)
+![Log in](https://github.com/mitovV/ForumSystem/assets/43573153/0e2e1176-04f2-46cc-955b-2774f372a915)
+
+### Register
+
+![Register](https://github.com/mitovV/ForumSystem/assets/43573153/a5b77347-27ac-44b8-b106-15a6c3f20ee4)
 
 ### Profile
 
