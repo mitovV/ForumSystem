@@ -20,7 +20,7 @@ class ErrorBoundary extends Component {
     }
 
     render() {
-        if (this.setState.hasError) {
+        if (this.state.hasError) {
             return (
                 <div className="row justify-content-center">
                     <div className="col col-md-5">
